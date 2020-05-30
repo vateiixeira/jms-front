@@ -769,22 +769,22 @@ export default {
         'Content-Type': 'application/json'
       }
     }
-    axios.get(`https://jms-backend.herokuapp.com//${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`https://jms-backend.herokuapp.com/api/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.motos = response.data
         vm.selectMotos = response.data
       })
-    axios.get(`https://jms-backend.herokuapp.com/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`https://jms-backend.herokuapp.com/api/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.cidades = response.data
         vm.selectCidades = response.data
       })
-    axios.get(`https://jms-backend.herokuapp.com/${vm.regiao}/${vm.id}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`https://jms-backend.herokuapp.com/api/${vm.regiao}/${vm.id}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.equipe = response.data.equipe
         vm.selectVendedores = response.data.equipe
       })
-    axios.get(`https://jms-backend.herokuapp.com/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`https://jms-backend.herokuapp.com/api/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.cabecalho = response.data
       })
