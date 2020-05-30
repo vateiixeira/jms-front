@@ -1,0 +1,743 @@
+{% load humanize %}
+{% load i18n %}
+{% load l10n %} 
+{% load cloudinary %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc." />
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../static/fonts/feather/feather.css" />
+    <link rel="stylesheet" href="../static/libs/flatpickr/dist/flatpickr.min.css" />
+    <link rel="stylesheet" href="../static/libs/quill/dist/quill.core.css" />
+    <link rel="stylesheet" href="../static/libs/highlightjs/styles/vs2015.css" />
+
+    <!-- Map -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+     
+    <link rel="stylesheet" href="../static/css/theme-dark.min.css">
+
+    <!-- VUE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- VUE LOADING -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3"></script>
+    <link href="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3/dist/vue-loading.css" rel="stylesheet">
+     
+    <!-- Title -->
+    <title>Dashkit </title>
+
+  </head>
+  <body>
+
+
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div  id="app" class="main-content">
+      
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="container-fluid">
+
+          <!-- Body -->
+          <div class="header-body">
+            <div class="row align-items-end">
+              <div class="col">
+
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">
+                  GERENTE
+                </h6>
+
+                <!-- Title -->
+                <h1 class="header-title">
+                  Dashboard
+                </h1>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Button -->
+                <a href="#!" class="btn btn-primary lift">
+                  Apresentacao
+                </a>
+
+              </div>
+            </div> <!-- / .row -->
+          </div> <!-- / .header-body -->
+
+        </div>
+      </div> <!-- / .header -->
+
+      <!-- CARDS -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-lg-6 col-xl">
+
+            <!-- Value  -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      PLANEJADO ({{regiao_user}})
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      ${{planejado_salario | intcomma}}
+                    </span>
+
+                    <!-- Badge -->
+                    <!-- <span class="badge badge-soft-success mt-n1">
+                      +3.5%
+                    </span> -->
+                  </div>
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      REALIZADO ({{regiao_user}})
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      ${{realizado_total | intcomma }}
+                    </span>
+
+                    <!-- Badge
+                    <span class="badge badge-soft-success mt-n1">
+                      +3.5%
+                    </span> -->
+                  </div>
+                  
+                  <div class="col-auto">
+
+                    <!-- Icon -->
+                    <span class="h2 fe fe-dollar-sign text-muted mb-0"></span>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12 col-lg-6 col-xl">
+
+            <!-- MOTOS -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      PLANEJADO MOTOS
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      {{ planejado_moto }}
+                    </span>
+
+                  </div>
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      REALIZADO MOTOS
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      {{realizado_moto_qtd}}
+                    </span>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Icon -->
+                    <span class="h2 fe fe-circle text-muted mb-0"></span>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12 col-lg-6 col-xl">
+
+            <!-- MOTOS -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      PLANEJADO COTAS
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      {{ planejado_cota }}
+                    </span>
+
+                  </div>
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      REALIZADO COTAS
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      {{realizado_cota_qtd}}
+                    </span>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Icon -->
+                    <span class="h2 fe fe-trending-up text-muted mb-0"></span>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12 col-lg-6 col-xl">
+
+            <!-- MOTOS -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      PLANEJADO VISITAS
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      {{planejado_visita}}
+                    </span>
+
+                  </div>
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                      REALIZADO VISITAS
+                    </h6>
+
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      1500
+                    </span>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Icon -->
+                    <span class="h2 fe fe-home text-muted mb-0"></span>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+            
+          </div>
+        </div><!-- / .row -->
+      </div> <!-- fecha card -->
+            <!-- TIMELINE -->
+            <div class="container-fluid">
+            <div class="card">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Timeline
+                </h4>
+
+              </div>
+              <div class="card-body">
+
+                <!-- CONTEUDO TIME LINE -->
+                time line ficara aqui **********
+
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+        <div class="row">
+          <div class="col-6 col-md-4">
+
+            <!-- Regiao -->
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Regiao JNB
+                    </h4>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Button -->
+                    <a href="#!" class="btn btn-sm btn-white">
+                      Apresentacao
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              
+              <div class="table-responsive mb-0" >
+                <table class="table table-sm table-nowrap card-table">
+                  <thead>
+                    <tr>
+                      <th>
+                          CIDADES
+                      </th>
+                      <th>
+                          MOTOS
+                      </th>
+                      <th>
+                          COTAS
+                      </th>
+                      <th>
+                          VISITAS
+                      </th>                     
+                    </tr>
+                  </thead>
+                  <tbody  v-for="i in cidades" :class="{active:i.nome == selected}" @click="selected = i.nome">
+                    <tr>
+                      <td>                        
+                          <div @click="desempenho" v-bind:id="[[i.nome]]" style=" width: 120px;" > 
+                            [[i.nome.slice(0,20)]]                            
+                          </div>          
+                      </td>
+                      <td >
+                        <!-- <span v-bind:class="[ i.desempenho === 'warning' ? warningClass : successClass ]"><h3>[[i.moto]]</h3></span> -->
+                        <span v-bind:class="desempenhoClass(i.desempenho)"><h3>[[i.moto]]</h3></span>
+                      </td>
+                      <td >
+                        <span v-bind:class="desempenhoClass(i.desempenho_cota)"><h3>[[i.cota]]</h3></span>
+                      </td>
+                      <td>
+                        <span class="badge badge-soft-success"><h3>**</h3></span>
+                      </td> 
+                    </tr>
+                    <tr>                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-4">
+
+            <!-- TIME -->
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Time
+                    </h4>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Button -->
+                    <a href="#!" class="btn btn-sm btn-white">
+                      Apresentacao
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              
+              <div class="table-responsive-sm" data-toggle="lists" data-options="{&quot;valueNames&quot;: [&quot;goal-project&quot;, &quot;goal-status&quot;, &quot;goal-progress&quot;, &quot;goal-date&quot;]}">
+                <table class="table table-sm table-nowrap card-table">
+                  
+                  <thead>                   
+                    <tr>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-project">
+                          NOME
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-status">
+                          MOTOS
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-progress">
+                          COTAS
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-date">
+                          VISITAS
+                        </a>
+                      </th>                     
+                    </tr>
+                  </thead>
+                  {% for key, value in equipe.items %}
+                  
+                  <tbody class="list" v-if="!existeCidade">
+                    <tr>
+                      <td class="goal-project" >
+                        <div class="avatar avatar-xs">
+                          <img src="{{ value.avatar.url}}" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <div id="nome-vendedor" style="width: 30px;">{{value.vendedor}}</div>                        
+                      </td>
+                      <td class="goal-status">
+                        <span class="badge badge-soft-success"><h3>{{value.moto}}</h3></span>
+                      </td>
+                      <td class="goal-progress">
+                        <span class="badge badge-soft-success"><h3>{{value.cota}}</h3></span>
+                      </td>
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>{{value.visita}}</h3></span>
+                      </td> 
+                    </tr>
+                    <tr>                      
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                  <tbody class="list" v-else v-for="i in equipe">
+                    <tr>
+                      <td class="goal-project" >
+                        <div class="avatar avatar-xs">
+                          <img v-bind:src="[[i.avatar]]" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <div id="nome-vendedor">[[i.nome]]</div>                        
+                      </td>
+                      <td class="goal-status">
+                        <span class="badge badge-soft-success"><h3>[[i.moto]]</h3></span>
+                      </td>
+                      <td class="goal-progress">
+                        <span class="badge badge-soft-success"><h3>[[i.cota]]</h3></span>
+                      </td>
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>[[i.visita]]</h3></span>
+                      </td> 
+                    </tr>
+                    <tr>                      
+                    </tr>
+                  </tbody>
+                  <!--  USUARIO QUE VENDERAM MAS NAO SAO DA EQUIPE -> MODEL FOREST -->
+                  <tbody class="list" v-for="i in forest">
+                    <tr class="forest" >
+                      <td >
+                        <div class="avatar avatar-xs">
+                          <img v-bind:src="[[i.avatar]]" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <div id="nome-vendedor" >[[i.nome]]</div>                        
+                      </td>
+                      <td class="goal-status">
+                        <span class="badge badge-soft-success"><h3>[[i.moto]]</h3></span>
+                      </td>
+                      <td class="goal-progress">
+                        <span class="badge badge-soft-success"><h3>[[i.cota]]</h3></span>
+                      </td>
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>[[i.visita]]</h3></span>
+                      </td> 
+                    </tr>
+                    <tr>                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+
+            <!-- Produtos -->
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Produtos
+                    </h4>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Button -->
+                    <a href="#!" class="btn btn-sm btn-white">
+                      Apresentacao
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="table-responsive-sm" data-toggle="lists" data-options="{&quot;valueNames&quot;: [&quot;goal-project&quot;, &quot;goal-status&quot;, &quot;goal-progress&quot;, &quot;goal-date&quot;]}">
+                <table class="table table-sm card-table" >
+                  <thead>
+                    <tr>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-project">
+                          NOME
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-status">
+                          MOTOS
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-date">
+                          AREA MOTO
+                        </a>
+                      </th> 
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-progress">
+                          COTAS
+                        </a>
+                      </th>
+                    
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-date">
+                          AREA COTA
+                        </a>
+                      </th>
+
+                    </tr>
+                  </thead>
+
+                  <tbody class="list" ref="tableProduto" v-if="!detalheCidade">
+                    <tr v-for="moto in motos">
+                      <td class="goal-status">
+                        <div class="avatar avatar-xs">
+                          <img v-bind:src="[[moto.avatar]]" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <div style="width: 110px;">[[moto.modelo.slice(0,20)]]</div>
+                      </td>
+                      <td class="goal-status" >
+                        <span class="badge badge-soft-success" ><h3>[[moto.moto]]</h3> </span>
+                        <h5>5,5652</h5>
+                      </td>
+
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>[[moto.area_moto]]%</h3></span>
+                      </td>
+
+                      <td class="goal-progress">
+                        <span class="badge badge-soft-success"><h3>[[moto.cota]]</h3></span>
+                      </td>
+ 
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>[[moto.area_cota]]%</h3></span>
+                      </td> 
+
+                    </tr>
+
+                    <!-- MOSTRA DETALHES DE CLICAR NA CIDADE -->
+                    <tbody v-else>
+                    <tr v-for="x in desempenhoMoto" >
+                      <td class="goal-project">
+                        <div class="avatar avatar-xs">
+                          <img v-bind:src="[[x.avatar]]" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        [[x.nome]]
+                      </td>
+                      <td class="goal-status">
+                        <span class="badge badge-soft-success"><h3>[[x.moto]]</h3></span>
+                      </td>
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>[[x.area_moto]]%</h3></span>
+                      </td> 
+
+                      <td class="goal-progress">
+                        <span class="badge badge-soft-success"><h3>[[x.cota]]</h3></span>
+                      </td>
+
+                      <td class="goal-date">
+                        <span class="badge badge-soft-success"><h3>[[x.area_cota]]%</h3></span>
+                      </td> 
+                    </tr>
+                  
+
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div> <!-- / .row -->
+          </div><!-- / .container fluid cards meio -->
+        <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
+            <!-- Mensagem rodape -->
+            <div class="card card-fill">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Titulo
+                </h4>
+
+              </div>
+              <div class="card-body">
+                Desenvolva seu time e obtenha resultados incriveis. Etc
+                Lugar A DEFINIR APOS DADOS ESTAREM PRONTOS ****      
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+        </div> <!-- / .row -->
+    </div>
+  
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- VUE JS -->
+    <script>
+  Vue.use(VueLoading);
+  Vue.component('loading', VueLoading)
+  const url = 'http://127.0.0.1:8000/api/'
+
+  var app = new Vue({
+      el: '#app',
+      delimiters: ['[[', ']]'],
+      data: {
+        regiao: '{{regiao_user}}',
+        equipe: [],
+        forest: [],
+        existeCidade: false,
+        motos: [],
+        cidades: [],
+        desempenhoMoto: [],
+        detalheCidade: false,
+        selected: undefined,
+        fullPage: false
+      },
+      mounted () {
+        var vm = this
+        axios.get(`http://127.0.0.1:8000/api/desempenho/modelo/${vm.regiao}/`)
+        .then(function (response) {
+                vm.motos = response.data
+              })
+        axios.get(`http://127.0.0.1:8000/api/listagem/cidade/${vm.regiao}`)             
+        .then(function (response) {
+                vm.cidades = response.data
+              })          
+      },
+      computed: {
+      },
+      methods: {
+          desempenhoClass: function(tipo) {
+            return {
+              'badge badge-soft-success' : tipo === 'success',
+              'badge badge-soft-danger' : tipo === 'error',
+              'badge badge-soft-warning' : tipo === 'warning',
+            }
+          } ,
+          desempenho: function (event) {
+              // LOADER
+              let loader = this.$loading.show({
+                container: this.fullPage ? null : this.$refs.tableProduto,
+                canCancel: true,
+                onCancel: this.onCancel,
+              })
+              // PEGA NOME DA CIDADE CLICADA
+              var cidade = event.target.id
+
+              // APAGA LISTA DA ANTIGA CIDADE
+              this.desempenhoMoto = []
+              // REQUEST PARA PEGAR DADOS DESTA CIDADE
+              axios.get(`http://127.0.0.1:8000/api/desempenho/${cidade}`)              
+              .then(response => {
+                this.equipe = response.data.equipe
+                this.forest = response.data.forest
+                this.existeCidade = true
+                this.desempenhoMoto = response.data.moto
+                loader.hide()
+                this.detalheCidade = true
+              })
+              .catch(error =>{
+              console.log(error);
+              loader.hide
+              })
+          }
+      }
+    })
+
+  </script>
+
+  <!-- <script src="../static/js/gerente.js"></script> -->
+
+    <!-- Libs JS -->
+    <script src="../static/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../static/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/libs/@shopify/draggable/lib/es5/draggable.bundle.legacy.js"></script>
+    <script src="../static/libs/autosize/dist/autosize.min.js"></script>
+    <script src="../static/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="../static/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="../static/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="../static/libs/highlightjs/highlight.pack.min.js"></script>
+    <script src="../static/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="../static/libs/list.js/dist/list.min.js"></script>
+    <script src="../static/libs/quill/dist/quill.min.js"></script>
+    <script src="../static/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="../static/libs/chart.js/Chart.extension.js"></script>
+
+    <!-- Map -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+    <!-- Theme JS -->
+    <script src="../static/js/theme.min.js"></script>
+    <script src="../static/js/dashkit.min.js"></script>
+
+ 
+
+
+
+
+  </body>
+
+<style>
+  h3{
+    margin-bottom: auto;
+  }
+  .active{
+    background-color: rgb(96, 142, 202);
+  }
+  .forest{
+    background-color: rgb(224, 230, 174, 0.2);
+  }
+
+</style>
+</html>
