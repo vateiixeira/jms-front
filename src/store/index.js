@@ -23,9 +23,9 @@ export default new Vuex.Store({
     jwt: localStorage.getItem('token'),
     endpoints: {
       // TODO: Remove hardcoding of dev endpoints
-      obtainJWT: 'http://127.0.0.1:8000/api/login/',
-      refreshJWT: 'http://127.0.0.1:8000/api/refresh-token/',
-      baseUrl: 'http://127.0.0.1:8000/api/'
+      obtainJWT: 'https://jms-backend.herokuapp.com//api/login/',
+      refreshJWT: 'https://jms-backend.herokuapp.com//api/refresh-token/',
+      baseUrl: 'https://jms-backend.herokuapp.com//api/'
     }
   },
 
