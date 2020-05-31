@@ -769,7 +769,7 @@ export default {
         'Content-Type': 'application/json'
       }
     }
-    axios.get(`https://jms-backend.herokuapp.com/api/modelo/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`https://jms-backend.herokuapp.com/api/desempenho/modelo/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.motos = response.data
         vm.selectMotos = response.data
