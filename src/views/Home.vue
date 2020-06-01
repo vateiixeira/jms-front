@@ -259,6 +259,13 @@
             </h4>
               </div>
             <div class="card-body">
+              <span>Alterar os dias (funcionalidade de teste)</span> <br>
+              <span>Dia</span>
+              <input type="text" v-model="dia" class="form-control form-control-rounded" placeholder="Dia" style="width:65px;">
+              <span>Mes</span>
+              <input type="text" v-model="mes" class="form-control form-control-rounded" placeholder="Mes" style="width:65px;">
+              <span>Ano</span>
+              <input type="text" v-model="ano" class="form-control form-control-rounded" placeholder="Ano" style="width:65px;">
             <div class="row" style="margin-top: 10px;">
             <!-- <button type="button" class="btn btn-primary" @click="getSinteticoModelo">Analítico Modelo</button> -->
             <button type="button" class="btn btn-primary" v-if="showAnalitico" @click="analitico" >Filtrar!</button>
@@ -1049,7 +1056,7 @@ export default {
       axios.get(`https://jms-backend.herokuapp.com/api/analitico/${this.dia}/${this.mes}/${this.ano}`, config)
         .then(response => {
           this.isLoading = false
-          console.log(response.data)
+          if (response.data[1] === 'error') { alert('Não existem vendas no mês para os dados pesquisados. Tente novamente.') }
           this.showModelo = true
           this.propModelo = response.data
           this.$scrollTo('#element', 1000, { easing: 'linear' })
