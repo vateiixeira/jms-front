@@ -1,30 +1,82 @@
 <template lang="html">
-  <form class="login form">
-    <div class="field">
-      <label for="id_username">Username</label>
-      <input
-        v-model="username"
-        type="text"
-        placeholder="Username"
-        autofocus="autofocus"
-        maxlength="150"
-        id="id_username">
+<div class="d-flex align-items-center bg-auth border-top border-top-2 border-primary" >
+   <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-xl-4 my-5">
+
+          <!-- Heading -->
+          <h1 class="display-4 text-center mb-3">
+            Bem-Vindo!
+          </h1>
+
+          <!-- Subheading -->
+          <p class="text-muted text-center mb-5">
+            Faça o login para acessar o sistema.
+          </p>
+
+          <!-- Form -->
+          <form>
+
+            <!-- Email address -->
+            <div class="form-group">
+
+              <!-- Label -->
+              <label>Usuário</label>
+
+              <!-- Input -->
+              <input type="email" class="form-control" placeholder="Digite o usuario" v-model="username">
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+              <div class="row">
+                <div class="col">
+
+                  <!-- Label -->
+                  <label>Senha</label>
+
+                </div>
+                <div class="col-auto">
+
+                  <!-- Help text -->
+                  <a href="#" class="form-text small text-muted">
+                    Esqueceu a senha ?
+                  </a>
+
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input type="password" class="form-control form-control-appended" placeholder="Digite sua senha" v-model="password">
+
+                <!-- Icon -->
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fe fe-eye"></i>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button class="btn btn-lg btn-block btn-primary mb-3" style="margin-left: -3px;" @click.prevent="authenticate">
+              Entrar!
+            </button>
+
+          </form>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
     </div>
-    <div class="field">
-      <label for="id_password">Password</label>
-      <input
-        v-model="password"
-        type="password"
-        placeholder="Password"
-        id="id_password">
-    </div>
-    <button
-      @click.prevent="authenticate"
-      class="button primary"
-      type="submit">
-      Log In
-    </button>
-  </form>
 </template>
 
 <script>
@@ -86,5 +138,6 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style>
+
 </style>

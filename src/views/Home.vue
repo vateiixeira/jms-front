@@ -1,6 +1,13 @@
 <template>
     <div  id="app" class="main-content">
 
+          <div class="vld-parent">
+        <loading :active.sync="isLoading"
+        :can-cancel="true"
+        :is-full-page="fullPage"
+        color="#131A7C"></loading>
+        </div>
+
       <!-- HEADER -->
       <div class="header">
         <div class="container-fluid">
@@ -288,7 +295,6 @@
                     <button  class="btn btn-rounded-circle btn-white">
                       <span @click="desRegiao" class="fe fe-search"> </span>
                     </button>
-                      <span>Visualizar total região</span>
                     </div>
 
                   <div class="col-auto">
@@ -712,11 +718,16 @@ import '../assets/libs/highlightjs/styles/vs2015.css'
 import axios from 'axios'
 import { mapState } from 'vuex'
 import Modelo from '../components/Modelo'
+// Import component
+import Loading from 'vue-loading-overlay'
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
   name: 'Home',
   components: {
-    Modelo
+    Modelo,
+    Loading
   },
   data: function () {
     return {
@@ -732,7 +743,6 @@ export default {
       detalheMoto: false,
       detalheVendedor: false,
       selected: undefined,
-      fullPage: false,
       dia: 20,
       mes: 11,
       ano: 2019,
@@ -755,10 +765,13 @@ export default {
       propModelo: {},
       showModelo: false,
       showAnalitico: false,
-      textToggleAnalitico: 'Ativar modo analitico'
+      textToggleAnalitico: 'Ativar modo analitico',
+      isLoading: false,
+      fullPage: true
     }
   },
   mounted () {
+    this.isLoading = true
     this.regiao = this.$store.state.regiao
     this.id = this.$store.state.id
     var vm = this
@@ -787,6 +800,7 @@ export default {
     axios.get(`https://jms-backend.herokuapp.com/api/desempenho/geral/cabecalho/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.cabecalho = response.data
+        vm.isLoading = false
       })
   },
   computed: mapState(['authUser']),
@@ -877,6 +891,7 @@ export default {
         })
     },
     desRegiao: function () {
+      this.isLoading = true
       this.arrSelectedModelo = []
       this.arrSelectedEquipe = []
       this.arrSelectedCidade = []
@@ -909,6 +924,7 @@ export default {
       axios.get(`https://jms-backend.herokuapp.com/api/desempenho/geral/cabecalho/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
         .then(function (response) {
           vm.cabecalho = response.data
+          vm.isLoading = false
         })
     },
     getSinteticoModelo: function () {
@@ -1017,6 +1033,7 @@ export default {
       console.log(this.arrSelectedCidade)
     },
     analitico: function () {
+      this.isLoading = true
       const config = {
         headers: {
         // Set your Authorization to 'JWT', not Bearer!!!
@@ -1031,6 +1048,7 @@ export default {
       }
       axios.get(`https://jms-backend.herokuapp.com/api/analitico/${this.dia}/${this.mes}/${this.ano}`, config)
         .then(response => {
+          this.isLoading = false
           console.log(response.data)
           this.showModelo = true
           this.propModelo = response.data
