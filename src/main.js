@@ -14,7 +14,7 @@ Vue.use(VueScrollTo)
 Vue.use(axios)
 
 if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = 'http://jms-backend.herokuapp.com/api/'
+  axios.defaults.baseURL = 'https://jms-backend.herokuapp.com/api/'
 } else {
   axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 }
