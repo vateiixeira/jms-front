@@ -1,5 +1,17 @@
 <template>
   <div class="container">
+         <div class="vld-parent">
+        <loading :active.sync="isLoading"
+        :can-cancel="false"
+        :is-full-page="fullPage"
+        color="#fff"
+        background-color="#12263f"
+        :width="loadConfig.width"
+        :height="loadConfig.height"
+        :opacity="loadConfig.opacity"
+        >
+        </loading>
+        </div>
       <br>
       <h2>Região</h2>
       <select class="custom-select" v-model="regiao" @change="regionChange" >
@@ -76,13 +88,18 @@
 // import { Bar } from 'vue-chartjs'
 import BarChart from './Bar'
 import axios from 'axios'
+// Import component
+import Loading from 'vue-loading-overlay'
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
   components: {
     'bar-chart-modelo': BarChart,
     'bar-chart-vendedor': BarChart,
     'bar-chart-cidade': BarChart,
-    'bar-chart-regiao': BarChart
+    'bar-chart-regiao': BarChart,
+    Loading
   },
   data: () => ({
     dados: '',
@@ -97,9 +114,17 @@ export default {
     loaded: false,
     loadedModelo: false,
     loadedCidade: false,
-    loadedVendedor: false
+    loadedVendedor: false,
+    isLoading: false,
+    fullPage: true,
+    loadConfig: {
+      width: 90,
+      height: 90,
+      opacity: 0.9
+    }
   }),
   async mounted () {
+    this.isLoading = true
     this.loaded = false
     try {
       const response = await axios.get(`/sazonalidade/${this.regiao}`)
@@ -107,6 +132,7 @@ export default {
       this.dados = dataGeral.data
       this.cardRegiao = response.data.lista
       this.loaded = true
+      this.isLoading = false
     } catch (err) {
       console.log(err)
     }
