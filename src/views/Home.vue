@@ -778,6 +778,7 @@ export default {
     }
   },
   mounted () {
+    console.log(this.$apiHost)
     this.isLoading = true
     this.regiao = this.$store.state.regiao
     this.id = this.$store.state.id
@@ -789,22 +790,22 @@ export default {
         'Content-Type': 'application/json'
       }
     }
-    axios.get(`https://jms-backend.herokuapp.com/api/desempenho/modelo/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`desempenho/modelo/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.motos = response.data
         vm.selectMotos = response.data
       })
-    axios.get(`https://jms-backend.herokuapp.com/api/listagem/cidade/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`listagem/cidade/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.cidades = response.data
         vm.selectCidades = response.data
       })
-    axios.get(`https://jms-backend.herokuapp.com/api/desempenho/regiao/geral/${vm.regiao}/${vm.id}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`desempenho/regiao/geral/${vm.regiao}/${vm.id}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.equipe = response.data.equipe
         vm.selectVendedores = response.data.equipe
       })
-    axios.get(`https://jms-backend.herokuapp.com/api/desempenho/geral/cabecalho/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+    axios.get(`desempenho/geral/cabecalho/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
       .then(function (response) {
         vm.cabecalho = response.data
         vm.isLoading = false
@@ -831,7 +832,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }
-      axios.get(`https://jms-backend.herokuapp.com/api/listagem/cidade/${this.regiao}/${this.dia}/${this.mes}/${this.ano}/`, config)
+      axios.get(`listagem/cidade/${this.regiao}/${this.dia}/${this.mes}/${this.ano}/`, config)
         .then(response => {
           this.cidades = response.data
           this.selectCidades = response.data
@@ -849,7 +850,7 @@ export default {
       // APAGA LISTA DE MOTOS GERAIS
       // this.motos = []
       // REQUEST PARA PEGAR DADOS DESTA CIDADE
-      axios.get(`https://jms-backend.herokuapp.com/api/desempenho/${cidade}/${this.dia}/${this.mes}/${this.ano}/`, config)
+      axios.get(`desempenho/${cidade}/${this.dia}/${this.mes}/${this.ano}/`, config)
         .then(response => {
           this.equipe = response.data.equipe
           this.forest = response.data.forest
@@ -873,7 +874,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }
-      axios.get(`https://jms-backend.herokuapp.com/api/desempenho/modelo/${modelo}/${this.regiao}/${this.dia}/${this.mes}/${this.ano}/`, config)
+      axios.get(`desempenho/modelo/${modelo}/${this.regiao}/${this.dia}/${this.mes}/${this.ano}/`, config)
         .then((response) => {
           this.cidades = response.data.cidade
           this.equipe = response.data.equipe
@@ -889,7 +890,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }
-      axios.get(`https://jms-backend.herokuapp.com/api/desempenho/vendedor/${cpf}/${this.regiao}/${this.dia}/${this.mes}/${this.ano}/`, config)
+      axios.get(`desempenho/vendedor/${cpf}/${this.regiao}/${this.dia}/${this.mes}/${this.ano}/`, config)
         .then((response) => {
           // this.detalheVendedor = true
           this.cidades = response.data.cidade
@@ -916,19 +917,19 @@ export default {
           'Content-Type': 'application/json'
         }
       }
-      axios.get(`https://jms-backend.herokuapp.com/api/desempenho/modelo/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+      axios.get(`desempenho/modelo/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
         .then(function (response) {
           vm.motos = response.data
         })
-      axios.get(`https://jms-backend.herokuapp.com/api/listagem/cidade/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+      axios.get(`listagem/cidade/${vm.regiao}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
         .then(function (response) {
           vm.cidades = response.data
         })
-      axios.get(`https://jms-backend.herokuapp.com/api/desempenho/regiao/geral/${vm.regiao}/${vm.id}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+      axios.get(`desempenho/regiao/geral/${vm.regiao}/${vm.id}/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
         .then(function (response) {
           vm.equipe = response.data.equipe
         })
-      axios.get(`https://jms-backend.herokuapp.com/api/desempenho/geral/cabecalho/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
+      axios.get(`desempenho/geral/cabecalho/${vm.dia}/${vm.mes}/${vm.ano}/`, config)
         .then(function (response) {
           vm.cabecalho = response.data
           vm.isLoading = false
@@ -947,7 +948,7 @@ export default {
         // }
       }
       if (this.selectedCidade === '' && this.selectedVendedor === '') {
-        axios.get(`https://jms-backend.herokuapp.com/api/produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.regiao}`, config)
+        axios.get(`produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.regiao}`, config)
           .then(response => {
             this.showModelo = true
             this.propModelo = response.data
@@ -959,7 +960,7 @@ export default {
             console.log(error)
           })
       } else if (this.selectedVendedor === '') {
-        axios.get(`https://jms-backend.herokuapp.com/api/produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.selectedCidade}/cidade`, config)
+        axios.get(`produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.selectedCidade}/cidade`, config)
           .then(response => {
             this.showModelo = true
             this.propModelo = response.data
@@ -971,7 +972,7 @@ export default {
             console.log(error)
           })
       } else if (this.selectedCidade === '') {
-        axios.get(`https://jms-backend.herokuapp.com/api/produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.selectedVendedor}/vendedor`, config)
+        axios.get(`produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.selectedVendedor}/vendedor`, config)
           .then(response => {
             this.showModelo = true
             this.propModelo = response.data
@@ -983,7 +984,7 @@ export default {
             console.log(error)
           })
       } else {
-        axios.get(`https://jms-backend.herokuapp.com/api/produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.selectedVendedor}/${this.selectedCidade}`, config)
+        axios.get(`produto/${this.selectedModelo}/${this.dia}/${this.mes}/${this.ano}/${this.selectedVendedor}/${this.selectedCidade}`, config)
           .then(response => {
             this.showModelo = true
             this.propModelo = response.data
@@ -1053,7 +1054,7 @@ export default {
           ...(this.arrSelectedEquipe.length > 0 ? { vendedores: this.arrSelectedEquipe.reduce((f, s) => `${f},${s}`) } : {})
         }
       }
-      axios.get(`https://jms-backend.herokuapp.com/api/analitico/${this.dia}/${this.mes}/${this.ano}`, config)
+      axios.get(`analitico/${this.dia}/${this.mes}/${this.ano}`, config)
         .then(response => {
           this.isLoading = false
           if (response.data[1] === 'error') { alert('Não existem vendas no mês para os dados pesquisados. Tente novamente.') }

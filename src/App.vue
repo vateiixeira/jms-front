@@ -12,7 +12,6 @@ import VueJwtDecode from 'vue-jwt-decode'
 export default {
   name: 'app',
   components: {
-    // Login
   },
   data: function () {
     return {

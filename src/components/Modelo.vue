@@ -289,7 +289,8 @@
                             <span class="badge badge-soft-success mt-n1">
                             +3.5%
                             </span> -->
-                        </div>
+                              </div>
+
                         <div class="col">
 
                             <!-- Title -->
