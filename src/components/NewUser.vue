@@ -116,9 +116,10 @@ export default {
         console.log(responsePost)
         this.loaded = true
         this.isLoading = false
+        this.$swal('Sucesso!!!', 'Usuário cadastrado com sucesso!', 'success')
       } catch (err) {
         console.log(err)
-        alert('CPF EXISTENTE.')
+        this.$swal('Error!', 'CPF EXISTENTE', 'error')
       }
     }
   }

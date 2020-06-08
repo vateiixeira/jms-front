@@ -4,11 +4,13 @@ import router from './router'
 import store from './store'
 import VueSimpleAlert from 'vue-simple-alert'
 import axios from 'axios'
+import VueSwal from 'vue-swal'
 
 Vue.config.productionTip = false
 
 var VueScrollTo = require('vue-scrollto')
 
+Vue.use(VueSwal)
 Vue.use(VueSimpleAlert)
 Vue.use(VueScrollTo)
 Vue.use(axios)
