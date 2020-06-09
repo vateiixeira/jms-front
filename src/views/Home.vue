@@ -464,7 +464,7 @@
                     <tr>
                       <td class="goal-project" >
                         <div class="avatar avatar-xs">
-                          <img v-bind:src="i.avatar" alt="..." class="avatar-img rounded-circle">
+                          <img src="https://pbs.twimg.com/profile_images/444875479/logo_James_Motoshop_img_400x400.jpg" alt="..." class="avatar-img rounded-circle">
                         </div>
                         <div v-bind:id="i.cpf">{{ i.nome ? i.nome.slice(0,20) : i.nome}} </div>
                       </td>
@@ -517,7 +517,7 @@
                       </td>
                       <td class="goal-project" >
                         <div class="avatar avatar-xs">
-                          <img v-bind:src="i.avatar" alt="..." class="avatar-img rounded-circle">
+                          <img src="https://pbs.twimg.com/profile_images/444875479/logo_James_Motoshop_img_400x400.jpg" alt="..." class="avatar-img rounded-circle">
                         </div>
                         <div v-bind:id="i.cpf">{{ i.nome ? i.nome.slice(0,20) : i.nome}} </div>
                       </td>

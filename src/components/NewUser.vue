@@ -116,7 +116,12 @@ export default {
         console.log(responsePost)
         this.loaded = true
         this.isLoading = false
-        this.$swal('Sucesso!!!', 'Usuário cadastrado com sucesso!', 'success')
+        this.$swal('Usuário cadastrado com sucesso!', 'success')
+        this.cpf = []
+        this.nome = []
+        this.cargo = []
+        this.regiao = []
+        this.arrSelectedCidade = []
       } catch (err) {
         console.log(err)
         this.$swal('Error!', 'CPF EXISTENTE', 'error')
