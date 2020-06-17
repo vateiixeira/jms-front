@@ -40,6 +40,12 @@ const routes = [
     name: 'NewUser',
 
     component: () => import('../components/NewUser.vue')
+  },
+  {
+    path: '/planejado',
+    name: 'Planejado',
+
+    component: () => import('../components/Planejado.vue')
   }
 ]
 
