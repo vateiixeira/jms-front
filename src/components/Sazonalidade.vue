@@ -20,11 +20,48 @@
     <div class="card">
     <div class="card-body">
         <!-- Chart -->
-        <div class="chart">
         <bar-chart-regiao
         :title='regiao'
         :listValues="cardRegiao"
         v-if="loaded"></bar-chart-regiao>
+        <div class="row flex-nowrap">
+          <div class="butao">
+            <input class="form-control form-control-rounded" v-model="jan" @change="mudaData">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div >
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+          <div class="butao">
+            <input class="form-control form-control-rounded">
+          </div>
+
         </div>
     </div>
     </div>
@@ -102,6 +139,7 @@ export default {
     Loading
   },
   data: () => ({
+    jan: 20,
     dados: '',
     regiao: 'JNB',
     modelo: '',
@@ -178,11 +216,22 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    mudaData: function () {
+      this.loaded = false
+      var valor = parseInt(this.jan)
+      this.cardRegiao[0] = valor
+      setTimeout(() => { this.loaded = true }, 100)
+      console.log(this.cardRegiao)
     }
   }
 }
 </script>
 
 <style>
-
+  .butao{
+    width: 110px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 </style>
