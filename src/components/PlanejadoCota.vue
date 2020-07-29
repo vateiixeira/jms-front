@@ -543,7 +543,7 @@ export default {
     this.loaded = false
     try {
       const dataGeral = await axios.get(
-        `/previsao/regiao/${this.regiao}/${this.valor}`
+        `/previsao/regiao/cota/${this.regiao}/${this.valor}`
       )
       this.dados = dataGeral.data
       this.loaded = true
@@ -959,7 +959,7 @@ export default {
     },
     submitFirstEtapa: function () {
       axios
-        .post('grava/planejado/etapa1', {
+        .post('grava/planejado/cota/etapa1', {
           dados: this.formSave,
           ano: 2020,
           regiao: this.regiao
@@ -999,7 +999,7 @@ export default {
       }
     },
     submitDados: function () {
-      axios.post('salva/planejado', {
+      axios.post('salva/planejado/cota', {
         cidade: this.formCidade,
         vendedor: this.formVendedor,
         regiao: this.regiao

@@ -46,6 +46,12 @@ const routes = [
     name: 'Planejado',
 
     component: () => import('../components/Planejado.vue')
+  },
+  {
+    path: '/planejado/cota',
+    name: 'PlanejadoCota',
+
+    component: () => import('../components/PlanejadoCota.vue')
   }
 ]
 

@@ -100,7 +100,7 @@
 
                             <!-- Heading -->
                             <span class="h2 mb-0">
-                            20
+                            {{data.meta}}
                             </span>
 
                             <!-- Badge -->

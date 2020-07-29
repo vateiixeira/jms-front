@@ -469,10 +469,10 @@
                         <div v-bind:id="i.cpf">{{ i.nome ? i.nome.slice(0,20) : i.nome}} </div>
                       </td>
                       <td class="goal-status">
-                        <span class="badge badge-soft-success"><h3>{{i.moto}}</h3></span>
+                        <span v-bind:class="desempenhoClass(i.desempenho)"><h3>{{i.moto}}</h3></span>
                       </td>
                       <td class="goal-progress">
-                        <span class="badge badge-soft-success"><h3>{{i.cota}}</h3></span>
+                        <span v-bind:class="desempenhoClass(i.desempenho_cota)"><h3>{{i.cota}}</h3></span>
                       </td>
                       <td class="goal-date">
                         <span class="badge badge-soft-success"><h3>{{i.visita}}</h3></span>
@@ -597,8 +597,8 @@
                         <div :id="moto.modelo" style="width: 110px;" >{{moto.modelo.slice(0,20)}}</div>
                       </td>
                       <td class="goal-status" >
-                        <span class="badge badge-soft-success" ><h3>{{moto.moto}}</h3> </span>
-                        <h5>5,5652</h5>
+                        <span  v-bind:class="desempenhoClass(moto.desempenho)" ><h3>{{moto.moto}}</h3> </span>
+                        <h5>{{moto.porcen_desempenho}}%</h5>
                       </td>
 
                       <td class="goal-date">
@@ -606,7 +606,7 @@
                       </td>
 
                       <td class="goal-progress">
-                        <span class="badge badge-soft-success"><h3>{{moto.cota}}</h3></span>
+                        <span v-bind:class="desempenhoClass(moto.desempenho_cota)"><h3>{{moto.cota}}</h3></span>
                       </td>
 
                       <td class="goal-date">
